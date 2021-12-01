@@ -796,6 +796,17 @@
     margin-bottom: 20px;
 }
 
+#page-footer .grid .wp-inner .new ul.follow {
+    list-style: none;
+    display: flex;
+}
+
+#page-footer .grid .wp-inner .new ul.follow a {
+    color: black;
+    font-size: 20px;
+    margin-right: 15px;
+}
+
 ul.list-item {
     list-style: none;
 }
