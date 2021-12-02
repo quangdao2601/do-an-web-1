@@ -164,9 +164,13 @@ function showCartItemList() {
 
 // check user login  
 function login() {
+    var user = []
+    localStorage.setItem('infouser', JSON.stringify(user))
+    user = JSON.parse(localStorage.getItem('infouser'))
     var username = document.getElementById('login-form__username').value;
     var password = document.getElementById('login-form__password').value;
     adminarray = JSON.parse(localStorage.getItem('user'));
+    var s = ""
     if (username == "" || password == "") {
         alert('Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu')
     } else {
@@ -174,12 +178,24 @@ function login() {
             if (username == adminarray[i].username && password == adminarray[i].password) {
                 // window.location = "http://localhost:8080/unitop.vn/Front-end/lambenngoai/web1/do-an-web-1/"
                 alert('Dang nhap thanh cong')
-                return location.reload();
-
+                var info = {
+                    username: username,
+                    fullname: fullname,
+                    type: adminarray[i].type
+                }
+                user.push(info)
+                localStorage.setItem('infouser', JSON.stringify(user))
+                return location.reload()
             }
         }
         alert('Thong tin tai khoan hoạc mat khau khong chinh xac')
     }
+}
+
+// logout
+function logout() {
+    localStorage.removeItem('infouser')
+    return location.reload()
 }
 // dang ky thanh vien moi
 function reg() {
@@ -239,11 +255,12 @@ function reg() {
         userarray.push(user)
         localStorage.setItem('user', JSON.stringify(userarray))
         alert('Bạn đã đăng ký thành công')
-        window.location = "http://localhost:8080/unitop.vn/Front-end/lambenngoai/web1/do-an-web-1/"
+        location.reload()
     }
 
 }
 // tao admin  
+
 function createadmin() {
     var adminarray = []
     if (localStorage.getItem("user") == null) {
@@ -268,12 +285,29 @@ function createadmin() {
 
     }
 }
+// onload auto tạo fomm login reg
+function createformlogin() {
+    var s = '<div id="page-header-top__login" class="page-header-top__login page-header-item-hover"><span class="page-header-login-span" onclick="showLoginFormFnc()">Đăng nhập</span></div><div id="page-header-top__register" class="page-header-top__register page-header-item-hover"><span class="page-header-register-span" onclick="showRegisterFormFnc()">Đăng ký</span></div>'
+    document.getElementById('form_login_reg').innerHTML = s
+}
 
 function onloadFnc() {
     showProductTypeListFnc();
     showHomeProductList(1, 9, arrProduct);
     showCartItemList();
     createadmin();
+    if (localStorage.getItem('infouser') == null) {
+        createformlogin()
+    } else {
+        user = JSON.parse(localStorage.getItem('infouser'))
+        if (user[0].type == 'kh') {
+            s = ' <div id="page-header-top__login" class="page-header-top__login page-header-item-hover"><span class="page-header-login-span" >Xin chào:' + user[0].username + '</span> </div> <div id="page-header-top__register" class="page-header-top__register page-header-item-hover"><span class="page-header-register-span" onclick="logout()" >(Đăng xuất)</span></div>'
+            document.getElementById('form_login_reg').innerHTML = s
+        } else {
+            s = ' <div id="page-header-top__login" class="page-header-top__login page-header-item-hover"><span class="page-header-login-span" >Xin chào:' + user[0].username + '</span> </div> <div id="page-header-top__register" class="page-header-top__register page-header-item-hover"><span class="page-header-register-span" onclick="logout()" >(Đăng xuất)</span></div><div id="page-header-top__register" class="page-header-top__register page-header-item-hover"><span class="page-header-register-span"><a href="admin.html" ><i class="fas fa-forward"></i></a></span></div>'
+            document.getElementById('form_login_reg').innerHTML = s
+        }
+    }
 }
 
 window.onload = onloadFnc;
