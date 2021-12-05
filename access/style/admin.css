@@ -11,6 +11,7 @@ body {
 
 #wp-content {
     display: flex;
+    min-height: 800px;
 }
 
 .left {
@@ -198,8 +199,7 @@ ul.list-item li:hover {
 
 /* form update sản phẩm */
 
-
-/* #update {
+#update {
     position: fixed;
     top: 0px;
     bottom: 0px;
@@ -207,25 +207,41 @@ ul.list-item li:hover {
     left: 0px;
     z-index: 20;
     margin: auto;
+    display: none;
+    padding: auto;
+}
+
+.hien {
+    display: block!important;
 }
 
 #update .formupdate {
     padding: 20px;
-    margin: 200px auto;
-    height: 350;
+    margin: auto;
+    margin-top: 6%;
+    min-height: 10%;
     background-color: red;
     border-radius: 4px;
-    width: 600px;
+    width: 50%;
     background-color: var(--white-color);
     box-shadow: 1px 1px 50px rgb(0 0 0 / 25%);
     animation: authFormShow ease-out 280ms;
-    display: none;
+    /* display: none; */
 }
 
-#update .formupdate h2 {
+#update .formupdate .head h2 {
     margin-bottom: 20px;
     text-align: center;
     font-size: 20px;
+}
+
+#update .formupdate .head i {
+    font-size: 25px;
+}
+
+#update .formupdate .head {
+    display: flex;
+    justify-content: space-between;
 }
 
 #update .formupdate input {
@@ -250,4 +266,9 @@ ul.list-item li:hover {
 #update .formupdate input.btn-add:hover {
     background-color: red;
     color: white;
-} */
+}
+
+#update .formupdate img {
+    width: 20%;
+    height: auto;
+}

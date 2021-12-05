@@ -19,17 +19,68 @@ function showproduct(obj) {
     var s = ""
     s += "<table class='tbl-product'> <thead><tr><th>Mã sản phẩm</th><th>Type</th><th>Ảnh</th><th>Tên</th><th>Gía</th><th>Thao tác</th></tr></thead><tbody>"
     for (i = 0; i < obj; i++) {
-        s += "<tr><td>" + products[i].productID + "</td><td>" + products[i].typeID + "</td><td><img src='access/image/product/" + products[i].image + "' alt=''></td><td>" + products[i].name + "</td><td>" + products[i].price + "</td><td><i id='" + products[i].productID + "' onclick='deleteproduct(this)' class='fas fa-trash-alt'></i>   ----  <i id='" + products[i].productID + "' onclick='updateproduct(this)' class='fas fa-pen-alt'></i></td> </tr>"
+        s += "<tr><td>" + products[i].productID + "</td><td>" + products[i].typeID + "</td><td><img src='access/image/product/" + products[i].image + "' alt=''></td><td>" + products[i].name + "</td><td>" + products[i].price + "</td><td><i id='" + products[i].productID + "' onclick='deleteproduct(this)' class='fas fa-trash-alt'></i>   ----  <i id='" + products[i].productID + "' onclick='showformupdate(this)' class='fas fa-pen-alt'></i></td> </tr>"
     }
     s += "</tbody></table>"
     document.getElementById("list").innerHTML = s
 }
 
-// cập nhật sản phẩm
-// function updateproduct(obj) {
-//     // document.getElementById("formupdate").classList.add("show-component");
-//     alert("ok")
-// }
+// showform update sản phẩm
+function showformupdate(obj) {
+    document.getElementById("update").classList.add("hien")
+    listproduct = JSON.parse(localStorage.getItem("listproduct"))
+    document.getElementById("list").innerHTML = ""
+    document.getElementById("right").innerHTML = ""
+    document.getElementById("paginate").innerHTML = ""
+    for (i = 0; i < listproduct.length; i++) {
+        if (obj.id == listproduct[i].productID) {
+
+            document.getElementById("nameupdate").value = listproduct[i].name
+            document.getElementById("priceupdate").value = listproduct[i].price
+            document.getElementById("codeupdate").value = listproduct[i].productID
+            var infocode = document.getElementById("codeupdate")
+            infocode.setAttribute("readonly", "readonly")
+            document.getElementById("typeIDproduct").value = listproduct[i].typeID
+            var infotype = document.getElementById("typeIDproduct")
+            infotype.setAttribute("readonly", "readonly")
+            var info = document.getElementById("infoproduct")
+            info.setAttribute("src", "access/image/product/" + listproduct[i].image)
+
+            break;
+        }
+    }
+}
+
+// update sản phẩm
+function updateproduct() {
+    var name = document.getElementById("nameupdate").value
+    var price = document.getElementById("priceupdate").value
+    var code = document.getElementById("codeupdate").value
+    if (name == "" || price == "") {
+        alert("Nhập đầy đủ thông tin sản phẩm")
+    } else {
+        listproduct = JSON.parse(localStorage.getItem("listproduct"))
+        for (i = 0; i < listproduct.length; i++) {
+            if (code == listproduct[i].productID) {
+                listproduct[i].name = name
+                listproduct[i].price = price
+                localStorage.setItem('listproduct', JSON.stringify(listproduct))
+                alert("Đã cập nhật sản phẩm thành công")
+                location.reload()
+            }
+        }
+
+    }
+}
+
+function hide() {
+    document.getElementById("update").classList.remove("hien")
+    numproduct = JSON.parse(localStorage.getItem('listproduct'))
+    pagination(numproduct.length, 4, 1) // tổng sản phẩm , 3 sản phẩm 1 trang, load sp
+    showproduct(4);
+    loadform();
+    showtype()
+}
 // xóa sản phẩm
 function deleteproduct(obj) {
     products = JSON.parse(localStorage.getItem('listproduct'))
@@ -152,7 +203,6 @@ function pagination(numproduct, numpage, type) { // numproduct:số sản phẩm
 function loaddata(obj) {
     var page = obj.getAttribute("attr"); // thuộc tính để biết số sản phẩm trong 1 trang
     var type = obj.getAttribute("typeload") // nếu là 1 thì load sp 2 thì load user
-
     var id = obj.id
     var start = (id - 1) * page // sản phẩm bắt đầu
     products = JSON.parse(localStorage.getItem('listproduct'))
@@ -163,11 +213,11 @@ function loaddata(obj) {
 
         if (start - (-page) >= products.length) {
             for (i = start; i < products.length; i++) {
-                s += "<tr><td>" + products[i].productID + "</td><td>" + products[i].typeID + "</td><td><img src='access/image/product/" + products[i].image + "' alt=''></td><td>" + products[i].name + "</td><td>" + products[i].price + "</td><td><i id='" + products[i].productID + "' onclick='deleteproduct(this)' class='fas fa-trash-alt'></i>   ----  <i id='" + products[i].productID + "' onclick='showLoginFormFnc()' class='fas fa-pen-alt'></i></td> </tr>"
+                s += "<tr><td>" + products[i].productID + "</td><td>" + products[i].typeID + "</td><td><img src='access/image/product/" + products[i].image + "' alt=''></td><td>" + products[i].name + "</td><td>" + products[i].price + "</td><td><i id='" + products[i].productID + "' onclick='deleteproduct(this)' class='fas fa-trash-alt'></i>   ----  <i id='" + products[i].productID + "' onclick='showformupdate(this)' class='fas fa-pen-alt'></i></td> </tr>"
             }
         } else {
             for (i = start; i < ((page - (-start))); i++) {
-                s += "<tr><td>" + products[i].productID + "</td><td>" + products[i].typeID + "</td><td><img src='access/image/product/" + products[i].image + "' alt=''></td><td>" + products[i].name + "</td><td>" + products[i].price + "</td><td><i id='" + products[i].productID + "' onclick='deleteproduct(this)' class='fas fa-trash-alt'></i>   ----  <i id='" + products[i].productID + "' onclick='showLoginFormFnc()' class='fas fa-pen-alt'></i></td> </tr>"
+                s += "<tr><td>" + products[i].productID + "</td><td>" + products[i].typeID + "</td><td><img src='access/image/product/" + products[i].image + "' alt=''></td><td>" + products[i].name + "</td><td>" + products[i].price + "</td><td><i id='" + products[i].productID + "' onclick='deleteproduct(this)' class='fas fa-trash-alt'></i>   ----  <i id='" + products[i].productID + "' onclick='showformupdate(this)' class='fas fa-pen-alt'></i></td> </tr>"
             }
         }
         s += "</tbody></table>"
