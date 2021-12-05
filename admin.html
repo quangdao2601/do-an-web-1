@@ -8,110 +8,68 @@
     <title>Đồ án môn học</title>
     <link rel="stylesheet" href="./access/style/base.css" />
     <link rel="stylesheet" href="./access/style/gridLayout.css" />
-    <link rel="stylesheet" href="./access/style/responsive.css" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" />
     <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="./access/icon_pack/themify-icons.css" />
-    <link rel="stylesheet" href="access/fontawesome/css/all.css">
-    <link rel="stylesheet" href="access/style/admin.css">
+    <link rel="stylesheet" href="access/fontawesome/css/all.css" />
+    <link rel="stylesheet" href="access/style/admin.css" />
+    <link rel="stylesheet" href="access/style/main.css">
+    <link rel="stylesheet" href="access/style/responsive.css">
 </head>
 
 <body>
     <div id="wrapper">
-        <div id="header">
-
-            FASHION TREND
-
-        </div>
+        <div id="header">FASHION TREND</div>
         <div id="wp-content">
-
             <div class="left">
                 <ul class="list-item">
-                    <li>Trang chủ</li>
-                    <li>Sản phẩm</li>
-                    <li>Quản trị viên</li>
-                    <li>Thống kê</li>
+                    <li id="tc" onclick="show(this)">Trang chủ</li>
+                    <li id="sp" onclick="show(this)">Sản phẩm</li>
+                    <li id="qtv" onclick="show(this)">Quản trị viên</li>
+                    <li id="tk" onclick="show(this)">Thống kê</li>
                 </ul>
             </div>
-            <div class="content">
-                <table class="tbl-product">
-                    <thead>
-                        <tr>
-                            <th>Stt</th>
-                            <th>Mã</th>
-                            <th>Ảnh</th>
-                            <th>Tên</th>
-                            <th>Gía</th>
-                            <th>Thao tác</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>#1232#</td>
-                            <td><img src="access/image/product/nike-boston.jpg" alt=""></td>
-                            <td> Giafy nike </td>
-                            <td>1.200.000đ</td>
-                            <td><i class="fas fa-trash-alt"></i>-<i class="fas fa-pen-alt"></i></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>#1232#</td>
-                            <td><img src="access/image/product/nike-boston.jpg" alt=""></td>
-                            <td> Giafy nike </td>
-                            <td>1.200.000đ</td>
-                            <td><i class="fas fa-trash-alt"></i>-<i class="fas fa-pen-alt"></i></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>#1232#</td>
-                            <td><img src="access/image/product/nike-boston.jpg" alt=""></td>
-                            <td> Giafy nike </td>
-                            <td>1.200.000đ</td>
-                            <td><i class="fas fa-trash-alt"></i>-<i class="fas fa-pen-alt"></i></td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>#1232#</td>
-                            <td><img src="access/image/product/nike-boston.jpg" alt=""></td>
-                            <td> Giafy nike </td>
-                            <td>1.200.000đ</td>
-                            <td><i class="fas fa-trash-alt"></i>-<i class="fas fa-pen-alt"></i></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div id="" class="content">
+                <div id="list"></div>
+                <div id="paginate"></div>
+                <div id="update">
+
+                </div>
+
+
             </div>
-            <div class="right">
 
-                <h2>Thêm sản phẩm</h2>
-                <form action="" class="form-add">
-                    <label for="">Tên sản phẩm</label>
-                    <input type="text" name="name" id="name" value="" placeholder="Nhập tên sản phẩm">
-                    <label for="">Gía sản phẩm</label>
-                    <input type="text" name="" id="price" value="" placeholder="Nhập giá sản phẩm">
-                    <label for="">Chọn danh mục sản phẩm</label>
-                    <select name="type" id="type">
-                                <option value="">Nike</option>
-                                <option value="">Adidas</option>
-                                <option value="">Fila</option>
-                                <option value="">Champion</option>
-                            </select>
-                    <input type="submit" name="btn-add" id="" class="btn-add" value="Thêm sản phẩm">
-                </form>
-
+            <div id="right" class="right">
             </div>
 
             <div class="clearfix"></div>
         </div>
 
-        <div id="footer">
+        <div id="footer">footer</div>
 
-            footer
+        <!-- 
+        <div id="update">
+            <div class="formupdate">
+                <h2>Cập nhật sản phẩm</h2>
+                <label for="">Tên sản phẩm</label>
+                <input type="text" id="nameupdate" value="" placeholder="Tên sản phẩm">
+                <label for="">Gía sản phẩm</label>
+                <input type="text" id="priceupdate" placeholder="Gía sản phẩm">
+                <label for="">Mã sản phẩm</label>
+                <input type="text" id="codeproduct" value="" placeholder="Mã sản phẩm">
+                <input type="submit" class="btn-add" value="Cập nhật sản phẩm">
+            </div>
+        </div> -->
+        <!-- icon pack -->
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-        </div>
-    </div>
+        <!-- apps script -->
+        <script src="./access/javascript/main.js"></script>
+        <script src="./access/javascript/admin.js"></script>
 </body>
 
 </html>

@@ -58,6 +58,7 @@ ul.list-item li:hover {
 }
 
 .form-add input,
+.addtype input,
 .form-add select {
     display: block;
     margin-bottom: 10px;
@@ -66,16 +67,47 @@ ul.list-item li:hover {
     width: 60%;
 }
 
-.form-add input.btn-add {
+.form-add input.btn-add,
+.addtype input.btn-add {
     padding: 10px;
     border: none;
     color: black;
+}
+
+.addtype input.btn-add:hover {
+    cursor: pointer;
+    background-color: red;
+    color: white;
 }
 
 .form-add input.btn-add:hover {
     cursor: pointer;
     background-color: red;
     color: white;
+}
+
+.form-add input[type="file"] {
+    padding-left: 0px;
+}
+
+
+/* / danh muc san pham */
+
+#listtype ul.list_type {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#listtype ul.list_type li {
+    padding: 10px;
+    border: 1px solid black;
+    margin-right: 2px;
+}
+
+#listtype ul.list_type li:hover {
+    cursor: pointer;
+    background-color: blanchedalmond;
 }
 
 
@@ -102,3 +134,120 @@ ul.list-item li:hover {
 .content .tbl-product tbody tr td {
     text-align: center;
 }
+
+
+/* bảng khách hàng */
+
+.content .listuser {
+    width: 100%;
+}
+
+.content .listuser tr th {
+    width: 16.6%;
+    padding: 20px;
+}
+
+.content .listuser thead {
+    background-color: #ddd;
+}
+
+.content .listuser tbody tr {
+    border-bottom: 1px solid black;
+    height: 40px;
+}
+
+.content .listuser tbody tr td {
+    text-align: center;
+}
+
+
+/* trang chu */
+
+.content img {
+    width: 100%;
+    height: auto;
+}
+
+
+/* thanh phan trang */
+
+.content #paginate {
+    text-align: center;
+}
+
+.content #paginate ul.paginate {
+    margin-top: 20px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.content #paginate ul.paginate li {
+    margin-right: 5px;
+    padding: 10px;
+    background: red;
+    color: white;
+}
+
+.content #paginate ul.paginate li:hover {
+    cursor: pointer;
+    background: yellow;
+    color: black;
+}
+
+
+/* form update sản phẩm */
+
+
+/* #update {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    z-index: 20;
+    margin: auto;
+}
+
+#update .formupdate {
+    padding: 20px;
+    margin: 200px auto;
+    height: 350;
+    background-color: red;
+    border-radius: 4px;
+    width: 600px;
+    background-color: var(--white-color);
+    box-shadow: 1px 1px 50px rgb(0 0 0 / 25%);
+    animation: authFormShow ease-out 280ms;
+    display: none;
+}
+
+#update .formupdate h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 20px;
+}
+
+#update .formupdate input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+#update .formupdate label {
+    font-size: 14px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+#update .formupdate input.btn-add {
+    border: none;
+    padding: 20px;
+}
+
+#update .formupdate input.btn-add:hover {
+    background-color: red;
+    color: white;
+} */
