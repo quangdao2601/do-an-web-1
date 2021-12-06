@@ -848,3 +848,161 @@ ul.list-item {
     font-size: 14px;
     color: red;
 }
+
+
+/* // css danh sách sản phẩm */
+
+#listproduct ul.listproduct {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+#listproduct ul.listproduct li {
+    width: 24%;
+    font-size: 14px;
+    border: 2px solid #f3f3f3;
+    margin-bottom: 2%;
+    background: #fff;
+    overflow: hidden;
+    height: 400px;
+}
+
+#listproduct ul.listproduct li .moreinfo {
+    padding: 20px 10px 0px 10px;
+}
+
+#listproduct ul.listproduct li .moreinfo p {
+    height: 30px;
+}
+
+#listproduct ul.listproduct li .moreinfo .rate {
+    color: gold;
+}
+
+#listproduct ul.listproduct li .buy {
+    text-align: center;
+    padding: 15px;
+    background-color: red;
+    color: white;
+    margin-top: 10px;
+}
+
+#listproduct ul.listproduct li .moreinfo .price {
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+
+#listproduct ul.listproduct li .thumb {
+    height: 60%;
+}
+
+#listproduct ul.listproduct li .thumb img {
+    width: 100%;
+    height: 100%;
+}
+
+#listproduct ul.listproduct li:hover {
+    cursor: pointer;
+}
+
+#listproduct ul.listproduct li:hover img {
+    transform: scale(1.05);
+    transition: all 0.25s;
+}
+
+#listproduct ul.listproduct li:hover .buy {
+    background-color: blue;
+}
+
+#listproduct ul.listproduct li:hover p {
+    color: blue;
+}
+
+
+/* // thanh phana tranhg
+ */
+
+.grid #paginate {
+    text-align: center;
+}
+
+.grid #paginate ul.paginate {
+    margin-top: 20px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.grid #paginate ul.paginate li {
+    margin-right: 5px;
+    padding: 10px;
+    background: red;
+    color: white;
+}
+
+.grid #paginate ul.paginate li:hover {
+    cursor: pointer;
+    background: yellow;
+    color: black;
+}
+
+
+/* 
+chi tiet san pham */
+
+#listproduct .detailproduct {
+    display: flex;
+}
+
+#listproduct .detailproduct .thumbnail {
+    width: 30%;
+    margin-right: 30px;
+}
+
+#listproduct .detailproduct .thumbnail img {
+    width: 100%;
+    height: auto;
+}
+
+#listproduct .detailproduct .information {
+    width: 70%;
+    font-size: 14px;
+}
+
+#listproduct .detailproduct .information .name,
+#listproduct .detailproduct .information .code,
+#listproduct .detailproduct .information .price,
+#listproduct .detailproduct .information .detail {
+    margin-bottom: 20px;
+}
+
+#listproduct .detailproduct .information .add_to_cart {
+    padding: 15px;
+    background-color: black;
+    width: 25%;
+    color: white;
+}
+
+#listproduct .detailproduct .information .add_to_cart:hover {
+    background-color: red;
+    cursor: pointer;
+}
+
+#listproduct .detailproduct .information .listsize {
+    list-style: none;
+    margin-top: 20px;
+    display: flex;
+}
+
+#listproduct .detailproduct .information .listsize li {
+    padding: 10px;
+    border: 1px solid black;
+    margin-right: 15px;
+    margin-bottom: 10px;
+}
+
+#listproduct .detailproduct .information .listsize li:hover {
+    cursor: pointer;
+}

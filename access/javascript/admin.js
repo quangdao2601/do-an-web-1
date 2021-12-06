@@ -194,7 +194,7 @@ function pagination(numproduct, numpage, type) { // numproduct:số sản phẩm
     var s = ""
     s += "<ul class='paginate'>"
     for (i = 1; i <= sotrang; i++) {
-        s += "<li onclick='loaddata(this)' typeload='" + type + "' attr=" + numpage + " id='" + i + "'>" + i + "</li>"
+        s += "<li onclick='loaddata(this)  ' typeload='" + type + "' attr=" + numpage + " id='" + i + "'>" + i + "</li>"
     }
     s += "</ul>"
     document.getElementById('paginate').innerHTML = s
