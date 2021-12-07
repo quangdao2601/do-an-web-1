@@ -38,6 +38,7 @@ function showformupdate(obj) {
             document.getElementById("nameupdate").value = listproduct[i].name
             document.getElementById("priceupdate").value = listproduct[i].price
             document.getElementById("codeupdate").value = listproduct[i].productID
+            document.getElementById("detailupdate").value = listproduct[i].detail
             var infocode = document.getElementById("codeupdate")
             infocode.setAttribute("readonly", "readonly")
             document.getElementById("typeIDproduct").value = listproduct[i].typeID
@@ -45,7 +46,6 @@ function showformupdate(obj) {
             infotype.setAttribute("readonly", "readonly")
             var info = document.getElementById("infoproduct")
             info.setAttribute("src", "access/image/product/" + listproduct[i].image)
-
             break;
         }
     }
@@ -56,7 +56,8 @@ function updateproduct() {
     var name = document.getElementById("nameupdate").value
     var price = document.getElementById("priceupdate").value
     var code = document.getElementById("codeupdate").value
-    if (name == "" || price == "") {
+    var detail = document.getElementById("detailupdate").value
+    if (name == "" || price == "" || detail == "") {
         alert("Nhập đầy đủ thông tin sản phẩm")
     } else {
         listproduct = JSON.parse(localStorage.getItem("listproduct"))
@@ -64,6 +65,7 @@ function updateproduct() {
             if (code == listproduct[i].productID) {
                 listproduct[i].name = name
                 listproduct[i].price = price
+                listproduct[i].detail = detail
                 localStorage.setItem('listproduct', JSON.stringify(listproduct))
                 alert("Đã cập nhật sản phẩm thành công")
                 location.reload()
@@ -105,7 +107,8 @@ function addproduct() {
     var code = document.getElementById('codeproduct').value;
     var imgproduct = document.getElementById('imgproduct').value;
     var type = document.getElementById('type_product').value
-    if (imgproduct == "" || name == "" || price == "" || code == "") {
+    var detail = document.getElementById("detailproduct").value
+    if (imgproduct == "" || name == "" || price == "" || code == "" || detail == "") {
         return alert("Vui lòng nhập đầy đủ thông tin sản phẩm")
     } else {
         listproduct = JSON.parse(localStorage.getItem('listproduct'))
@@ -120,7 +123,7 @@ function addproduct() {
             name: name,
             price: price,
             image: imgp,
-
+            detail: detail
         }
         listproduct.push(info_product)
         localStorage.setItem('listproduct', JSON.stringify(listproduct))
@@ -174,7 +177,7 @@ function showuser(obj) {
 function loadform() {
 
     var s = ""
-    s += " <h2>Thêm sản phẩm</h2><form action='' class='form-add' name='formadd'><label for=''>Tên sản phẩm</label > <input type='text' name='nameproduct' id='nameproduct' value='' placeholder='Nhập tên sản phẩm' /><label for=''>Mã sản phẩm</label><input type='text' name='codeproduct' id='codeproduct' value='' placeholder='Nhập mã sản phẩm'/><label for=''>Gía sản phẩm</label><input type='text' name='priceproduct' id='priceproduct' value='' placeholder='Nhập giá sản phẩm' /><label for=''>Chọn danh mục sản phẩm</label><select name='typeproduct' id='type_product'></select> <label for='myfile'>Anh sản phẩm:</label><input type='file' id='imgproduct' name='myfile' /><input type='submit' name='btn-add' id='' onclick='addproduct()' class='btn-add' value='Thêm sản phẩm' /></form><h2>Thêm danh mục sản phẩm</h2><form action='' class='addtype'><label for='add'>Thêm danh mục</label><input type='text' name='type' id='addtype' placeholder='Nhập tên danh mục'><label for=''>Id danh mục</label><input type='text' name='typeID' id='addtypeID' placeholder='Nhập id danh mục'><input type='submit' onclick='formaddtype()' id='submit' value='Thêm danh mục' class='btn-add'></form>"
+    s += " <h2>Thêm sản phẩm</h2><form action='' class='form-add' name='formadd'><label for=''>Tên sản phẩm</label > <input type='text' name='nameproduct' id='nameproduct' value='' placeholder='Nhập tên sản phẩm' /><label for=''>Mã sản phẩm</label><input type='text' name='codeproduct' id='codeproduct' value='' placeholder='Nhập mã sản phẩm'/><label for=''>Gía sản phẩm</label><input type='text' name='priceproduct' id='priceproduct' value='' placeholder='Nhập giá sản phẩm' /><label id=''>Chi tiết sản phẩm</label><textarea placeholder='Nhập chi tiết sản phẩm' rows='7' id='detailproduct'></textarea><label for=''>Chọn danh mục sản phẩm</label><select name='typeproduct' id='type_product'></select> <label for='myfile'>Anh sản phẩm:</label><input type='file' id='imgproduct' name='myfile' /><input type='submit' name='btn-add' id='' onclick='addproduct()' class='btn-add' value='Thêm sản phẩm' /></form><h2>Thêm danh mục sản phẩm</h2><form action='' class='addtype'><label for='add'>Thêm danh mục</label><input type='text' name='type' id='addtype' placeholder='Nhập tên danh mục'><label for=''>Id danh mục</label><input type='text' name='typeID' id='addtypeID' placeholder='Nhập id danh mục'><input type='submit' onclick='formaddtype()' id='submit' value='Thêm danh mục' class='btn-add'></form>"
     document.getElementById('right').innerHTML = s
 }
 

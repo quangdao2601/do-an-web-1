@@ -59,6 +59,7 @@ ul.list-item li:hover {
 }
 
 .form-add input,
+.form-add textarea,
 .addtype input,
 .form-add select {
     display: block;
@@ -218,7 +219,7 @@ ul.list-item li:hover {
 #update .formupdate {
     padding: 20px;
     margin: auto;
-    margin-top: 6%;
+    /* margin-top: 1%; */
     min-height: 10%;
     background-color: red;
     border-radius: 4px;
@@ -245,6 +246,14 @@ ul.list-item li:hover {
 }
 
 #update .formupdate input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+#update .formupdate textarea {
     display: block;
     width: 100%;
     padding: 10px;

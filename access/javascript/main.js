@@ -37,10 +37,16 @@ function setProductItem(typeID, productID, name, price, sale, img, detail) {
     this.detail = detail;
 }
 
-// function setCartItem(cartID, product) {
-//     this.cartID = cartID;
-//     this.product = product;
-// }
+// cấu trúc giỏ hàng
+
+function setCart(productID, image, price, name, numOrder) {
+    this.productID = productID;
+    this.image = image;
+    this.price = price;
+    this.name = name;
+    this.numOrder = numOrder;
+}
+// tạo giỏ hàng
 
 // type list
 // var arrType = [new setProductType("nike-id", "Nike"), new setProductType("adidas", "Adidas"), new setProductType("fila", "Fila"), new setProductType("champion", "Champion")];
@@ -182,6 +188,56 @@ function createproduct() {
 //     }
 // }
 
+
+
+
+// thêm sản phẩm vào giỏ hàng 
+function addProductToCart(obj) {
+    var id = obj.id;
+    listproduct = JSON.parse(localStorage.getItem('listproduct'))
+
+    cartt = JSON.parse(localStorage.getItem("listCart"))
+    for (i = 0; i < listproduct.length; i++) {
+        if (listproduct[i].productID == id) {
+
+            if (localStorage.getItem('listCart') == null) {
+                var product = [
+                    new setCart(listproduct[i].productID, listproduct[i].image, listproduct[i].price, listproduct[i].name, 1)
+                ]
+                localStorage.setItem("listCart", JSON.stringify(product))
+                alert("Đã thêm sản phẩm vào giỏ hàng")
+                return location.reload()
+            } else {
+                for (k = 0; k < cartt.length; k++) {
+                    if (cartt[k].productID == id) {
+                        cartt[k].numOrder++;
+                        localStorage.setItem("listCart", JSON.stringify(cartt))
+                        alert("Đã thêm sản phẩm vào giỏ hàng")
+                        return location.reload()
+                    }
+
+                }
+                var product = [
+                    new setCart(listproduct[i].productID, listproduct[i].image, listproduct[i].price, listproduct[i].name, 1)
+                ]
+                cartt.push(product)
+                localStorage.setItem("listCart", JSON.stringify(cartt))
+                alert("Đã thêm sản phẩm vào giỏ ")
+                return location.reload()
+
+            }
+
+        }
+    }
+}
+
+// alert("Đã thêm sản phẩm vào giỏ hàng")
+
+
+// thanh toán giỏ hàng
+function checkout() {
+
+}
 
 // check user login  
 function login() {
@@ -364,7 +420,7 @@ function detailproduct(obj) {
     var s = ""
     for (i = 0; i < products.length; i++) {
         if (id == products[i].productID) {
-            s += "   <div class='detailproduct'><div class='thumbnail'><img src='access/image/product/" + products[i].image + "' alt=''></div><div class='information'><h1 class='name'>" + products[i].name + "</h1> <p class='code'><strong>Ma san pham:</strong>" + products[i].productID + "</p> <p class='price'> <strong>Gia san pham:</strong>" + products[i].price + "</p> <p class='detail'> <strong>Chi tiết: </strong>:" + products[i].detail + "</p><p><strong>Kích thước</strong>:</p><ul class='listsize'><li>39</li><li>40</li><li>41</li><li>42</li><li>43</li></ul><div class='add_to_cart'>Them vao gio hang</div></div></div>"
+            s += "   <div class='detailproduct'><div class='thumbnail'><img src='access/image/product/" + products[i].image + "' alt=''></div><div class='information'><h1 class='name'>" + products[i].name + "</h1> <p class='code'><strong>Ma san pham:</strong>" + products[i].productID + "</p> <p class='price'> <strong>Gia san pham:</strong>" + products[i].price + "</p> <p class='detail'> <strong>Chi tiết: </strong>:" + products[i].detail + "</p><p><strong>Kích thước</strong>:</p><ul class='listsize'><li>39</li><li>40</li><li>41</li><li>42</li><li>43</li></ul><div id='" + products[i].productID + "' onclick='addProductToCart(this)' class='add_to_cart'>Them vao gio hang</div></div></div>"
             break;
         }
     }
