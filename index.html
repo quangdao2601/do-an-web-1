@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -17,7 +16,9 @@
     <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="./access/icon_pack/themify-icons.css" />
     <link rel="stylesheet" href="access/fontawesome/css/all.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
+
 
 <body>
     <div class="apps">
@@ -46,8 +47,8 @@
                         <div class="page-header-top__right-search">
                             <ion-icon class="page-header-search-icon" name="search-outline"></ion-icon>
                             <div class="page-header-search-box">
-                                <input id="page-header-search-field" type="text" class="page-header-search-field" placeholder="Tìm kiếm..." />
-                                <ion-icon class="page-header-search-nav-icon" name="search-outline"></ion-icon>
+                                <input id="page-header-search-field" value="" type="text" class="page-header-search-field" placeholder="Tìm kiếm..." />
+                                <ion-icon onclick="searchProduct()" class="page-header-search-nav-icon" name="search-outline"></ion-icon>
                             </div>
                         </div>
                         <!-- header cart button -->
@@ -62,7 +63,6 @@
 
                             <!-- <div class='page-header-top__right-cart-title'>Giỏ hàng</div>
                                 <div class='page-header-top__right-cart-container'>
-
                                     <div class='page-header-top__right-cart-item'>
                                         <img src='./access/image/product/nike-boston.jpg' alt='' class='page-header-top__right-cart-img' />
                                         <div class='page-header-top__right-cart-info'>
@@ -210,7 +210,6 @@
                                                         <p>Tôi là Admin sáng lập ra web này</p>
                                                         <div class='price'>120000</div>
                                                         <div class='rate'><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star-half'></i></div>
-
                                                     </div>
                                                     <div class='buy'>Thêm vào giỏ hàng</div>
                                                 </li>
@@ -231,7 +230,6 @@
                                                         Them vao gio hang
                                                     </div>
                                                 </div>
-
                                             </div> -->
                                         </div>
                                         <div id="paginate"></div>
@@ -388,7 +386,7 @@
                 </div>
             </div>
         </div>
-        <div id="form-checkout">
+        <!-- <div id="form-checkout">
             <div id='checkout'>
                 <form action='' class='infouser'>
                     <label for=''>Họ và tên</label>
@@ -408,7 +406,7 @@
                     <input type='submit' name='' onclick="check()" value='Thanh toán' class='btn-checkout'>
                 </form>
                 <div id='detailCheckout'>
-                    <!-- <ul class='listproduct'>
+                     <ul class='listproduct'>
                         <li>
                             <div class='thumb'>
                                 <img src='access/image/product/001.jpg' alt=''>
@@ -419,9 +417,9 @@
                         </li>
                     </ul>
                     <p><strong>Tổng tiền:1000</strong></p> -->
-                </div>
+        <!-- </div>
             </div>
-        </div>
+        </div>  -->
 
     </div>
     <!-- icon pack -->

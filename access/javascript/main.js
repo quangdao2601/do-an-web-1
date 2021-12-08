@@ -1,4 +1,3 @@
-// show login form onclick
 function showLoginFormFnc() {
     document.getElementById("modal-id").classList.add("show-component");
     document.getElementById("login-form-id").classList.add("show-component");
@@ -243,22 +242,23 @@ function showcart() {
     document.getElementById("showcart").classList.add("none")
     cartt = JSON.parse(localStorage.getItem("listCart"))
     var sum = 0
-    cartt = JSON.parse(localStorage.getItem("listCart"))
-    for (m = 0; m < cartt.length; m++) {
-        sum = sum - (-(cartt[m].price * cartt[m].numOrder))
-    }
-
     var s = ""
     s += "<div id='page-header-top__right-cart-box-id' class='page-header-top__right-cart-box'> <div class='page-header-top__right-cart-title'><p> Giỏ hàng </p><i onclick='hideCart()' class='fas fa-backspace'></i></div>    <div class='page-header-top__right-cart-container'>"
-    for (i = 0; i < cartt.length; i++) {
-        s += "<div class='page-header-top__right-cart-item'><img src='./access/image/product/" + cartt[i].image + "' alt='' class='page-header-top__right-cart-img' /><div class='page-header-top__right-cart-info'><div class='page-header-top__right-cart-name'>" + cartt[i].name + "</div><div class='page-header-top__right-cart-quantity'>SL: <span>" + cartt[i].numOrder + "</span></div></div><div class='page-header-top__right-cart-remove'><button onclick='deleteItemCart(this)' id='" + cartt[i].productID + "' class='page-header-top__right-cart-remove-btn'>Xoá</button></div></div>"
+    if (localStorage.getItem("listCart") != null) {
+        for (m = 0; m < cartt.length; m++) {
+            sum = sum - (-(cartt[m].price * cartt[m].numOrder))
+        }
+
+
+        for (i = 0; i < cartt.length; i++) {
+            s += "<div class='page-header-top__right-cart-item'><img src='./access/image/product/" + cartt[i].image + "' alt='' class='page-header-top__right-cart-img' /><div class='page-header-top__right-cart-info'><div class='page-header-top__right-cart-name'>" + cartt[i].name + "</div><div class='page-header-top__right-cart-quantity'>SL: <span>" + cartt[i].numOrder + "</span></div></div><div class='page-header-top__right-cart-remove'><button onclick='deleteItemCart(this)' id='" + cartt[i].productID + "' class='page-header-top__right-cart-remove-btn'>Xoá</button></div></div>"
+        }
     }
     s += "</div><div class='page-header-top__right-cart-pay'>  <div class='page-header-top__right-cart-total-price'>Thành tiền: <span>" + sum.toLocaleString() + ".đ</span></div><button onclick='checkout()' class='page-header-top__right-cart-pay-btn btn'>Thanh toán</button></div>   </div>"
     document.getElementById("showcart").innerHTML = s
     document.getElementById("showcart").classList.remove("none")
 }
 // alert("Đã thêm sản phẩm vào giỏ hàng")
-
 // ẩn giỏ hàng
 function hideCart() {
     document.getElementById("showcart").classList.add("none")
@@ -515,6 +515,21 @@ function detailproduct(obj) {
     document.getElementById("paginate").innerHTML = ""
 }
 
+function searchProduct() {
+    var text = document.getElementById("page-header-search-field").value;
+    products = JSON.parse(localStorage.getItem('listproduct'))
+    var s = ""
+
+    s += "  <ul class='listproduct'>"
+    for (i = 0; i < products.length; i++) {
+        if (products[i].name.includes(text) == true) {
+            s += "<li onclick='detailproduct(this)' id='" + products[i].productID + "' ><div class='thumb'><img src='access/image/product/" + products[i].image + "' alt=''></div><div class='moreinfo'><p>" + products[i].name + "</p><div class='price'>" + products[i].price.toLocaleString() + ".đ</div><div class='rate'><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star-half'></i></div></div></li>"
+        }
+    }
+    s += "</ul>"
+    document.getElementById("listproduct").innerHTML = s
+}
+
 function onloadFnc() {
     // localStorage.removeItem('listproduct')
     if (localStorage.getItem('infouser') == null) {
@@ -538,3 +553,63 @@ function onloadFnc() {
 }
 
 window.onload = onloadFnc;
+
+
+
+var correctTypeProductArr = []
+
+function searchProduct(noOfPages, typeID) {
+    numberOfItems = 0;
+    var productRow = "";
+    var k = 15 * 0;
+    var t = 0;
+
+    // console.log("k=" + k);
+    var text = document.getElementById("page-header-search-field").value;
+
+
+    var originalArray = JSON.parse(localStorage.getItem("listproduct"));
+    var j = 0;
+    for (let i = 0; i < originalArray.length; i++) {
+        // đoạn này kiểm tra sản phẩm có tồn tại text không
+        if (originalArray[i].name.includes(text) == true) {
+            // alert(text)
+            numberOfItems++;
+            correctTypeProductArr[j] = originalArray[i];
+            j++;
+        }
+    }
+    correctTypeProductArr.length = j;
+
+
+    var tempProductArr = []; // show home product list
+    for (let i = 0; i < 3; i++) {
+        var productCols = "";
+        for (let j = 0; j < 5; j++) {
+            if (correctTypeProductArr[k] == null) {
+                break;
+            } else {
+                tempProductArr[t] = correctTypeProductArr[k];
+                var productCol = "";
+
+                productCol =
+                    '<div class="grid__col-2-4"><div class="home-product__item"><a href="" class="home-product__item-link"><img src="./access/image/product/' +
+                    tempProductArr[t].img +
+                    '" alt="product image" class="home-product__item-img" /></a><!-- product detail --><div class="home-product__item-container"><div class="home-product__item-title">' +
+                    tempProductArr[t].name +
+                    '</div><div class="home-product__item-price">Giá: <span>' +
+                    tempProductArr[t].price +
+                    '$</span></div><div class="home-product__item-btn-field"><button id="' +
+                    tempProductArr[t].productID +
+                    '" class="home-product__item-cart-insert btn" onclick="showDetail(this.id);">Xem chi tiết</button><a href="#" class="home-product__item-link-btn"><button class="home-product__item-buy-btn btn">Mua Ngay</button></a></div></div></div></div>';
+                productCols += productCol;
+                k++;
+                t++;
+            }
+        }
+        productRow += ' <div class="grid__row">' + productCols + "</div>";
+        showHomeProductPagination();
+    }
+
+    document.getElementById("home-product-id").innerHTML = '<div class="grid">' + productRow + "</div>";
+}
