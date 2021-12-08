@@ -52,42 +52,39 @@
                         </div>
                         <!-- header cart button -->
                         <div class="page-header-top__right-cart page-header-item-hover">
-                            <ion-icon class="page-header-cart-icon" name="cart-outline"></ion-icon>
+                            <ion-icon onclick="showcart()" class="page-header-cart-icon" name="cart-outline"></ion-icon>
+                            <div id="showcart">
+
+                            </div>
                             <!-- cart box -->
-                            <div id="page-header-top__right-cart-box-id" class="page-header-top__right-cart-box">
-                                <!-- cart have item -->
-                                <div class="page-header-top__right-cart-title">Giỏ hàng</div>
-                                <div class="page-header-top__right-cart-container">
-                                    <!-- cart item -->
-                                    <div class="page-header-top__right-cart-item">
-                                        <img src="./access/image/product/nike-boston.jpg" alt="" class="page-header-top__right-cart-img" />
-                                        <div class="page-header-top__right-cart-info">
-                                            <div class="page-header-top__right-cart-name">
+
+                            <!-- <div id='page-header-top__right-cart-box-id' class='page-header-top__right-cart-box'> -->
+
+                            <!-- <div class='page-header-top__right-cart-title'>Giỏ hàng</div>
+                                <div class='page-header-top__right-cart-container'>
+
+                                    <div class='page-header-top__right-cart-item'>
+                                        <img src='./access/image/product/nike-boston.jpg' alt='' class='page-header-top__right-cart-img' />
+                                        <div class='page-header-top__right-cart-info'>
+                                            <div class='page-header-top__right-cart-name'>
                                                 Tên SP
                                             </div>
-                                            <div class="page-header-top__right-cart-quantity">
+                                            <div class='page-header-top__right-cart-quantity'>
                                                 SL: <span>2</span>
                                             </div>
-                                            <div class="page-header-top__right-cart-total-price">
-                                                Thành tiền: <span>1000$</span>
-                                            </div>
+                                            <div class='page-header-top__right-cart-total-price'>Thành tiền: <span>1000$</span></div>
                                         </div>
-                                        <div class="page-header-top__right-cart-remove">
-                                            <button class="page-header-top__right-cart-remove-btn">
-                          Xoá
-                        </button>
+                                        <div class='page-header-top__right-cart-remove'>
+                                            <button class='page-header-top__right-cart-remove-btn'>Xoá</button>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="page-header-top__right-cart-pay">
-                                    <button class="page-header-top__right-cart-pay-btn btn">
-                      Thanh toán
-                    </button>
-                                </div>
+                                <div class='page-header-top__right-cart-pay'>
+                                    <button class='page-header-top__right-cart-pay-btn btn'>Thanh toán</button>
+                                </div> -->
 
 
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -391,8 +388,42 @@
                 </div>
             </div>
         </div>
-    </div>
+        <div id="form-checkout">
+            <div id='checkout'>
+                <form action='' class='infouser'>
+                    <label for=''>Họ và tên</label>
+                    <input type='text' id='fullnameuser' value='' placeholder='Họ và tên'>
+                    <label for="">Số điện thoại</label>
+                    <input type='text' id='phoneuser' value='' placeholder='Số điện thoại'>
+                    <label for=''>Địa chỉ giao hàng</label>
+                    <textarea name='' id='address' cols='5' placeholder='Địa chỉ giao hàng' rows='5'></textarea>
+                    <label for=''>Ghi chú</label>
+                    <textarea name='' id='notes' cols='5' rows='5' placeholder='Ghi chú'></textarea>
+                    <label for=''>Hình thức thanh toán</label>
+                    <select name='payment' id='payment'>
+                        <option value=''>------Chọn------</option>
+                         <option value='Thanh toán khi nhận hàng'>Thanh toán khi nhận hàng</option>
+                         <option value='Thanh toán qua thẻ'>Thanh toán qua thẻ</option>
+                     </select>
+                    <input type='submit' name='' onclick="check()" value='Thanh toán' class='btn-checkout'>
+                </form>
+                <div id='detailCheckout'>
+                    <!-- <ul class='listproduct'>
+                        <li>
+                            <div class='thumb'>
+                                <img src='access/image/product/001.jpg' alt=''>
+                            </div>
+                            <div class='moreinfo'>
+                                <p>Số lượng:10</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <p><strong>Tổng tiền:1000</strong></p> -->
+                </div>
+            </div>
+        </div>
 
+    </div>
     <!-- icon pack -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
